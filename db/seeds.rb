@@ -5,3 +5,11 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+v = Vocable.create([{german: 'hallo', english: 'hello', swedish: 'hej'},
+                   {german: 'hi', english: 'hi', swedish: 'tjena'},
+                   {german: 'sehr gut', english: 'very good', swedish: 'jättebra'}]
+                   )
+
+unit1 = Unit.create(name: 'First Unit. Greetings')
+unit1.vocable = v
