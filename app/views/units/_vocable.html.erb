@@ -1,0 +1,10 @@
+<table class='table vocables'>
+  <thead>
+    <th> German </th>   <th> Swedish </th>   <th> English </th>
+  </thead>
+  <% vocable.each do |voc|%>
+<tr>
+  <td> <%= voc.german%> </td>   <td> <%= voc.swedish%> </td>   <td> <%= voc.english%> </td>
+</tr>
+<%end%>
+</table>

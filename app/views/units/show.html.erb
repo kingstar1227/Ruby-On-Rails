@@ -4,15 +4,6 @@
   <strong>Name:</strong>
   <%= @unit.name %>
 </p>
-<table class='table'>
-  <thead>
-    <th> German </th>   <th> Swedish </th>   <th> English </th>
-  </thead>
-<% @unit.vocable.each do |voc|%>
-<tr>
-  <td> <%= voc.german%> </td>   <td> <%= voc.swedish%> </td>   <td> <%= voc.english%> </td>
-</tr>
-<%end%>
-</table>
+<%= render 'vocable', vocable: @unit.vocable %>
 <%= link_to 'Edit', edit_unit_path(@unit) %> |
 <%= link_to 'Back', units_path %>

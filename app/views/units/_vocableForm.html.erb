@@ -1,0 +1,12 @@
+<%= form_tag('/vocables', method: 'post', remote: true) do %>
+
+  <%= text_field_tag "vocable[german]" %>
+
+  <%= text_field_tag "vocable[english]" %>
+
+  <%= text_field_tag "vocable[swedish]" %>
+
+  <%= hidden_field_tag("vocable[unit_id]", unit_id) %>
+
+  <%= submit_tag("Create Vocable") %>
+<%end%>
