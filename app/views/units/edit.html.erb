@@ -2,9 +2,9 @@
 
 <%= render 'form' %>
 
-<%= render 'vocables/vocable', vocable: @unit.vocable  %>
 
-<%= render 'vocables/form', unit_id: @unit.id %>
+
+<%= render 'vocables/form', vocable: @unit.vocable, unit_id: @unit.id %>
 
 <%= link_to 'Show', @unit %> |
 <%= link_to 'Back', units_path %>

@@ -1,12 +1,32 @@
-<%= form_tag('/vocables', method: 'post', remote: true) do %>
+<table class='table vocables'>
+  <thead>
+    <th> German </th>   <th> Swedish </th>   <th> English </th>
+  </thead>
+  <% vocable.each do |voc|%>
+<tr  id= "<%=voc.id%>">
+  <td> <%= voc.german%> </td>   <td> <%= voc.swedish%> </td>   <td> <%= voc.english%> </td>
 
-  <%= text_field_tag "vocable[german]" %>
+   <td> <%= render 'vocables/deleteButton', vocable: voc %>
+    </td>
+</tr>
+<%end%>
+</table>
 
-  <%= text_field_tag "vocable[english]" %>
 
-  <%= text_field_tag "vocable[swedish]" %>
+
+<%= form_tag('/vocables', method: 'post', remote: true, class: "form-inline ") do %>
+  <%= label_tag "vocable[german]", "German" %>
+  <%= text_field_tag "vocable[german]",nil, class: "form-control " %>
+
+
+
+  <%= label_tag "vocable[swedish]", "Swedish" %>
+  <%= text_field_tag "vocable[swedish]",nil, class: "form-control" %>
+
+  <%= label_tag "vocable[english]", "English" %>
+  <%= text_field_tag "vocable[english]",nil, class: "form-control" %>
 
   <%= hidden_field_tag("vocable[unit_id]", unit_id) %>
 
-  <%= submit_tag("Create Vocable") %>
+  <%= submit_tag("Create Vocable", class: "btn btn-success btn-sm") %>
 <%end%>

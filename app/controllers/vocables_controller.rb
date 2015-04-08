@@ -16,7 +16,7 @@ class VocablesController < ApplicationController
   def create
     @vocable = Vocable.create(vocable_params)
     respond_to do  |format|
-      format.js 
+      format.js
       format.json {render json: @vocable}
     end
 
@@ -42,7 +42,8 @@ class VocablesController < ApplicationController
   def destroy
     @vocable.destroy
     respond_to do |format|
-      format.html { redirect_to vocables_url, notice: 'Vocable was successfully destroyed.' }
+      format.js
+      format.html { head :no_content}
       format.json { head :no_content }
     end
   end

@@ -3,8 +3,11 @@
     <th> German </th>   <th> Swedish </th>   <th> English </th>
   </thead>
   <% vocable.each do |voc|%>
-<tr>
+<tr  id= "<%=voc.id%>">
   <td> <%= voc.german%> </td>   <td> <%= voc.swedish%> </td>   <td> <%= voc.english%> </td>
+
+   <td> 
+    </td>
 </tr>
 <%end%>
 </table>

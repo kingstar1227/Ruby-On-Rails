@@ -11,7 +11,7 @@ class CreatingVocbalesTest < ActionDispatch::IntegrationTest
       'Content-Type' => 'application/json'
     }
 
-    assert_equal 201, response.status
+    assert_equal 200, response.status
   end
   def vocable_attributes
     {
