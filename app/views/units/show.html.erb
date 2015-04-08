@@ -4,6 +4,6 @@
   <strong>Name:</strong>
   <%= @unit.name %>
 </p>
-<%= render 'vocable', vocable: @unit.vocable %>
+<%= render 'vocables/vocable', vocable: @unit.vocable %>
 <%= link_to 'Edit', edit_unit_path(@unit) %> |
 <%= link_to 'Back', units_path %>
