@@ -21,7 +21,7 @@ class UnitsControllerTest < ActionController::TestCase
       post :create, unit: { name: @unit.name }
     end
 
-    assert_redirected_to unit_path(assigns(:unit))
+    assert_redirected_to edit_unit_path(assigns(:unit))
   end
 
   test "should show unit" do
