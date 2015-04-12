@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :quizzes
+  resources :quizzes, only:[:create, :show]
 
   resources :units
   resources :vocables, only: [:create,:edit,:update, :destroy]

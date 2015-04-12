@@ -1,0 +1,5 @@
+<%= form_tag('/quizzes', method: 'post', class: "form-inline ") do %>
+<%= hidden_field_tag("unit[id]", unit_id) %>
+
+<%= submit_tag("Test", class: "btn btn-success btn-sm") %>
+<%end%>

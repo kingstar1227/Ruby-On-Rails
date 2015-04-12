@@ -3,11 +3,12 @@ class QuestionsController < ApplicationController
   before_action :set_question, only: [:show]
 
   def create
-    @question = Question.generate(questions_params[:id])
+    @question = Question.generate(vocable_id: questions_params[:id])
     redirect_to questions_path @question
   end
 
   def show
+
   end
 
   private

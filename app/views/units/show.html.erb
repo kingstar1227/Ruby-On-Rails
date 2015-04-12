@@ -5,5 +5,8 @@
   <%= @unit.name %>
 </p>
 <%= render 'vocables/vocable', vocable: @unit.vocable %>
+
+<%= render 'quizzes/form', unit_id: @unit.id %>
+
 <%= link_to 'Edit', edit_unit_path(@unit) %> |
 <%= link_to 'Back', units_path %>
