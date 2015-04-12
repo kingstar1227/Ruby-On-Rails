@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :quizzes
+
   resources :units
   resources :vocables, only: [:create,:edit,:update, :destroy]
   post 'questions' => 'questions#create'
