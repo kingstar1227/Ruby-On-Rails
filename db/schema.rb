@@ -23,14 +23,7 @@ ActiveRecord::Schema.define(version: 20150411163010) do
 
   add_index "questions", ["vocable_id"], name: "index_questions_on_vocable_id"
 
-  create_table "tests", force: :cascade do |t|
-    t.integer  "score"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer  "units_id"
-  end
-
-  add_index "tests", ["units_id"], name: "index_tests_on_units_id"
+  
 
   create_table "units", force: :cascade do |t|
     t.string   "name"
