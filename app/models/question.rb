@@ -1,5 +1,6 @@
 class Question < ActiveRecord::Base
   belongs_to :vocable
+  belongs_to :quiz
 
   def self.generate(vocableId)
     quest = Question.new()
@@ -8,7 +9,7 @@ class Question < ActiveRecord::Base
 
     quest.question = "What means #{vocable.english} in Swedish?"
     quest.answer = vocable.swedish
-    
+
     quest.save
 
     return quest

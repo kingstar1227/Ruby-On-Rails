@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150411163010) do
+ActiveRecord::Schema.define(version: 20150412100757) do
 
   create_table "questions", force: :cascade do |t|
     t.string   "question"
@@ -19,11 +19,28 @@ ActiveRecord::Schema.define(version: 20150411163010) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "vocable_id"
+    t.integer  "quiz_id"
   end
 
+  add_index "questions", ["quiz_id"], name: "index_questions_on_quiz_id"
   add_index "questions", ["vocable_id"], name: "index_questions_on_vocable_id"
 
-  
+  create_table "quizzes", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "unit_id"
+  end
+
+  add_index "quizzes", ["unit_id"], name: "index_quizzes_on_unit_id"
+
+  create_table "tests", force: :cascade do |t|
+    t.integer  "score"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "units_id"
+  end
+
+  add_index "tests", ["units_id"], name: "index_tests_on_units_id"
 
   create_table "units", force: :cascade do |t|
     t.string   "name"

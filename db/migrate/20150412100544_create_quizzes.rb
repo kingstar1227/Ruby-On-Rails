@@ -4,5 +4,6 @@ class CreateQuizzes < ActiveRecord::Migration
 
       t.timestamps null: false
     end
+    add_reference :quizzes, :unit, index:true
   end
 end
