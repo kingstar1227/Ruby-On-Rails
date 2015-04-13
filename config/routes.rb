@@ -1,10 +1,16 @@
 Rails.application.routes.draw do
   resources :quizzes, only:[:create, :show]
 
+  post 'quiz/check' => 'quizzes#check'
+
+
   resources :units
   resources :vocables, only: [:create,:edit,:update, :destroy]
+
   post 'questions' => 'questions#create'
   get 'questions/:id' => 'questions#show'
+
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

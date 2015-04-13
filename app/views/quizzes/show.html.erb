@@ -1,5 +1,12 @@
-<div>
+<%= form_tag('/quiz/check', method: 'check', class: "form-inline ") do %>
+
+  <%= hidden_field_tag("quiz_id", @quiz.id)%>
+
   <% @quiz.questions.each do |quest|%>
-  <%= quest.question %>
+  <%= quest.question  %>
+  <%= text_field_tag("answers[#{quest.id}]" ) %>
+  <br>
   <% end %>
-</div>
+
+  <%= submit_tag("Check the Test", class: "btn btn-success btn-sm") %>
+<%end%>
