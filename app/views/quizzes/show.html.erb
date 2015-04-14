@@ -1,10 +1,12 @@
 <%= form_tag('/quiz/check', method: 'check', class: "form-inline ") do %>
 
-  <%= hidden_field_tag("quiz_id", @quiz.id)%>
-
-  <% @quiz.questions.each do |quest|%>
+  <%= hidden_field_tag("content[quiz_id]", @quiz.id)%>
+  <% quest_ids = [] %>
+  <% answers = [] %>
+  <% @quiz.questions.each_with_index do | quest, index|%>
   <%= quest.question  %>
-  <%= text_field_tag("answers[#{quest.id}]" ) %>
+  <%= hidden_field_tag("content[quest_ids][#{index}]", quest.id)%>
+  <%= text_field_tag("content[answers][#{index}]" ) %>
   <br>
   <% end %>
 

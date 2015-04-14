@@ -13,14 +13,12 @@ class QuizzesController < ApplicationController
   end
 
   def check
-    quiz = Quiz.find(params[:quiz_id])
+    quiz = Quiz.find(check_params[:quiz_id])
     @unit = quiz.unit
     @result = 0
 
-
-
-    params[:answers].each do |quest_id, user_answer|
-     quest = Question.find(quest_id)
+    check_params[:answers].each do | key, user_answer|
+     quest = Question.find(check_params[:quest_ids][key])
      @result = @result + 1 if user_answer == quest.answer
     end
   end
@@ -35,6 +33,7 @@ class QuizzesController < ApplicationController
     end
 
     def check_params
+      params.require(:content).permit! #(:quiz_id, answers: [], quest_ids: [])
     end
 
 
