@@ -1,14 +1,26 @@
+<div class="page-header">
+<h1> Quiz for unit: <em> <%= @quiz.unit.name%> </em></h1>
+</div>
 <%= form_tag('/quiz/check', method: 'check', class: "form-inline ") do %>
 
   <%= hidden_field_tag("content[quiz_id]", @quiz.id)%>
   <% quest_ids = [] %>
   <% answers = [] %>
   <% @quiz.questions.each_with_index do | quest, index|%>
-  <%= quest.question  %>
-  <%= hidden_field_tag("content[quest_ids][#{index}]", quest.id)%>
-  <%= text_field_tag("content[answers][#{index}]" ) %>
-  <br>
+    <div class="row">
+
+      <div class="col-sm-6">
+         <big> <%= quest.question  %> </big>
+      </div>
+
+      <%= hidden_field_tag("content[quest_ids][#{index}]", quest.id)%>
+
+      <div class="col-sm-6">
+        <%= text_field_tag("content[answers][#{index}]", nil, {class: "form-control"} ) %>
+      </div>
+      
+    </div>
   <% end %>
 
-  <%= submit_tag("Check the Test", class: "btn btn-success btn-sm") %>
+  <%= submit_tag("Check the Test", class: "btn btn-success ") %>
 <%end%>

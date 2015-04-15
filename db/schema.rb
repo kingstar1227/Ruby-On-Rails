@@ -33,14 +33,7 @@ ActiveRecord::Schema.define(version: 20150412100757) do
 
   add_index "quizzes", ["unit_id"], name: "index_quizzes_on_unit_id"
 
-  create_table "tests", force: :cascade do |t|
-    t.integer  "score"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer  "units_id"
-  end
 
-  add_index "tests", ["units_id"], name: "index_tests_on_units_id"
 
   create_table "units", force: :cascade do |t|
     t.string   "name"

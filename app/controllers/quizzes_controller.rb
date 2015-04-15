@@ -16,18 +16,14 @@ class QuizzesController < ApplicationController
     quiz = Quiz.find(check_params[:quiz_id])
     @unit = quiz.unit
     @result = 0
-    if(check_params[:answers])
-      check_params[:answers].each do | key, user_answer|
-        quest = Question.find(check_params[:quest_ids][key])
-        @result = @result + 1 if user_answer == quest.answer
-      end
+    user_answers = check_params[:answers]
+    if(user_answers)
+      check_answers(user_answers, check_params[:quest_ids])
     else
       raise "Your committed data is broken"
       redirect_to quiz_path @quiz
     end
   end
-
-
 
 
 
@@ -40,5 +36,11 @@ class QuizzesController < ApplicationController
       params.require(:content).permit! #(:quiz_id, answers: [], quest_ids: [])
     end
 
+    def check_answers(answers, quest_ids)
+      answers.each do | key, user_answer|
+        quest = Question.find(quest_ids[key])
+        @result = @result + 1 if user_answer == quest.answer
+      end
+    end
 
 end
