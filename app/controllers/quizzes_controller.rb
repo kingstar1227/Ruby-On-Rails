@@ -16,10 +16,14 @@ class QuizzesController < ApplicationController
     quiz = Quiz.find(check_params[:quiz_id])
     @unit = quiz.unit
     @result = 0
-
-    check_params[:answers].each do | key, user_answer|
-     quest = Question.find(check_params[:quest_ids][key])
-     @result = @result + 1 if user_answer == quest.answer
+    if(check_params[:answers])
+      check_params[:answers].each do | key, user_answer|
+        quest = Question.find(check_params[:quest_ids][key])
+        @result = @result + 1 if user_answer == quest.answer
+      end
+    else
+      raise "Your committed data is broken"
+      redirect_to quiz_path @quiz
     end
   end
 
