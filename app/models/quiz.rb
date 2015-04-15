@@ -6,7 +6,11 @@ class Quiz < ActiveRecord::Base
     unit = Unit.find(self.unit_id)
 
     unit.vocable.each do |voc|
-      self.questions << Question.generate(vocable: voc)
+      quest = Question.where(vocable_id: voc.id).first
+      unless(quest)
+        quest = Question.generate(vocable: voc)
+      end
+      self.questions << quest
     end
     self.save
   end
