@@ -1,9 +1,9 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
+<h1>
+  <strong>Unit:</strong>
   <%= @unit.name %>
-</p>
+</h1>
 <%= render 'vocables/vocable', vocable: @unit.vocable %>
 
 <%= render 'quizzes/addQuiz', unit_id: @unit.id %>
