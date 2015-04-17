@@ -2,20 +2,22 @@ require 'test_helper'
 
 class CreatingVocbalesTest < ActionDispatch::IntegrationTest
   setup do
+    @unit = Unit.create(name: "TestUnIt")
+    @vocable = Vocable.create(english: 'test', swedish: 'test', german: 'test')
+    @unit.vocable << @vocable
+    @quest = Question.generate(vocable: @vocable)
     @quiz = Quiz.create()
+    @quiz.questions << @quest
+    @quiz.unit_id = @unit.id
   end
 
-  test 'check quiz with valid data' do
-    post '/quiz/check', { quiz_id: @quiz.id , answers: answers_send }.to_json, {
+  test 'check quiz without params redirected' do
+    post '/quiz/check', {content: { quiz_id: nil , quest_ids: nil}}.to_json, {
       'Content-Type' => 'application/json'
     }
 
-    assert_equal 200, response.status
+    assert_equal 302, response.status
   end
-  def answers_send
-    {
-      "1": "Test",
-      "2": "Test"
-    }
-  end
+
+
 end
