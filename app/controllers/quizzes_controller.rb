@@ -13,28 +13,17 @@ class QuizzesController < ApplicationController
   end
 
   def check
-    if check_params[:quiz_id] == nil
-      redirect_to :units
-      return
-    end
-
-    unless  quiz = Quiz.find(check_params[:quiz_id])
+    quiz_id = check_params[:quiz_id]
+    user_answers = check_params[:answers]
+    if Quiz.exists?(quiz_id) and user_answers && check_params[:quest_ids]
+      @question_count = user_answers.length
+      quiz = Quiz.find(quiz_id)
       @unit = quiz.unit
-      @result = 0
-      user_answers = check_params[:answers]
-      if(user_answers)
-        check_answers(user_answers, check_params[:quest_ids])
-      else
-        raise "Your committed data is broken"
-        redirect_to quiz_path @quiz
-      end
+      check_answers(user_answers, check_params[:quest_ids])
     else
       redirect_to :units
     end
-
   end
-
-
 
   private
     def quiz_params
@@ -46,9 +35,15 @@ class QuizzesController < ApplicationController
     end
 
     def check_answers(answers, quest_ids)
+      @result = 0
+      @failures = []
       answers.each do | key, user_answer|
         quest = Question.find(quest_ids[key])
-        @result = @result + 1 if user_answer == quest.answer
+        if user_answer == quest.answer
+          @result = @result + 1
+        else
+          @failures << {question: quest.question, user_answer: user_answer, right_answer: quest.answer}
+        end
       end
     end
 
