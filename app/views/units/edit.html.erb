@@ -5,6 +5,6 @@
 
 
 <%= render 'vocables/form', vocable: @unit.vocable, unit_id: @unit.id %>
-
-<%= link_to 'Show', @unit %> |
-<%= link_to 'Back', units_path %>
+<br>
+<%= link_to 'Back', units_path, class:"btn btn-default" %>
+<%= link_to 'Show', @unit, class:"btn btn-default pull-right" %>

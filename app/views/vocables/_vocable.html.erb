@@ -1,12 +1,12 @@
 <table class='table vocables'>
   <thead>
-    <th> German </th>   <th> Swedish </th>   <th> English </th>
+    <th class="text-center"> German </th>   <th class="text-center"> Swedish </th>   <th class="text-center"> English </th>
   </thead>
   <% vocable.each do |voc|%>
-<tr  id= "<%=voc.id%>">
-  <td> <%= voc.german%> </td>   <td> <%= voc.swedish%> </td>   <td> <%= voc.english%> </td>
+  <tr  id= "<%=voc.id%>">
+  <td class="text-center"> <%= voc.german%> </td>   <td class="text-center"> <%= voc.swedish%> </td>   <td class="text-center"> <%= voc.english%> </td>
 
-   <td> 
+   <td>
     </td>
 </tr>
 <%end%>
