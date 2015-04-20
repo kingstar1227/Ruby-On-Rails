@@ -2,17 +2,21 @@
 <p> <%= @result%> / <%= @question_count %> </p>
 
 <% if @failures %>
+<table class="table">
+<thead>
+  <th> Question:</th>
+  <th> Your answer:</th>
+  <th> Right answer: </th>
+</thead>
 
   <% @failures.each do |fail|%>
-  <div class="row">
-  <div class="col-md-1">Question:</div>
-  <div class="col-md-3"><%= fail[:question]%> </div>
-  <div class="col-md-1">  Your answer:</div>
-  <div class="col-md-3"><%= fail[:user_answer]%> </div>
-  <div class="col-md-1">R ight answer: </div>
-  <div class="col-md-3"> <%= fail[:right_answer] %> </div>
-  </div>
+  <tr>
+    <td><%= fail[:question]%> </td>
+    <td><%= fail[:user_answer]%> </td>
+    <td> <%= fail[:right_answer] %> </td>
+  </tr>
   <%end%>
+</table>
 <% end %>
 
 <%= link_to 'Back to unit', unit_path(@unit.id) %>
