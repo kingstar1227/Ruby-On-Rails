@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   resources :quizzes, only:[:create, :show]
 
   post 'quiz/check' => 'quizzes#check'
@@ -10,7 +11,7 @@ Rails.application.routes.draw do
   post 'questions' => 'questions#create'
   get 'questions/:id' => 'questions#show'
 
-
+  root to: "units#index"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
