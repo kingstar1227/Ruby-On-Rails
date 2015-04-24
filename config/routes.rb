@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :unit_subscriptions
+
   devise_for :users
   resources :quizzes, only:[:create, :show]
 
