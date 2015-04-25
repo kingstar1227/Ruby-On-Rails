@@ -14,6 +14,7 @@
     <% @units.each do |unit| %>
       <tr>
         <td><%= link_to unit.name, unit %></td>
+        <td><%= render 'unit_subscriptions/form', unit: unit, user: current_user %></td>
         <td><%= link_to 'Edit', edit_unit_path(unit) %></td>
         <td><%= link_to 'Destroy', unit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

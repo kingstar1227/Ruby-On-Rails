@@ -1,0 +1,8 @@
+<%= form_tag('/unit_subscriptions', method: 'post',  class: "form-inline ") do %>
+
+  <%= hidden_field_tag("unit_id", unit.id) %>
+  <%= hidden_field_tag("user_id", user.id) %>
+  <%= hidden_field_tag("score", 0) %>
+
+  <%= submit_tag("Learn", class: "btn btn-success btn-sm") %>
+<%end%>
