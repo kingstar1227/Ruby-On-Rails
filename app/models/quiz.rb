@@ -5,7 +5,7 @@ class Quiz < ActiveRecord::Base
   def fetchQuestions()
     unit = Unit.find(self.unit_id)
 
-    unit.vocable.each do |voc|
+    unit.vocables.each do |voc|
       quest = Question.where(vocable_id: voc.id).first
       unless(quest)
         quest = Question.generate(vocable: voc)

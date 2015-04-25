@@ -6,14 +6,14 @@ class CreatingVocbalesTest < ActionDispatch::IntegrationTest
   end
 
   test 'creates vocable with valid data' do
-    post '/vocables', { vocable: vocable_attributes }.to_json, {
+    post '/vocables', { vocable: vocables_attributes }.to_json, {
       'Accept' => 'application/javascript',
       'Content-Type' => 'application/json'
     }
 
     assert_equal 200, response.status
   end
-  def vocable_attributes
+  def vocables_attributes
     {
       german: 'Hallo test',
       english: 'Hallo Test',

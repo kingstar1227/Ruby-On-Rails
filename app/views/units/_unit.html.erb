@@ -1,0 +1,7 @@
+<h1>
+  <strong>Unit:</strong>
+  <%= unit.name %>
+</h1>
+<%= render 'vocables/vocable', vocable: unit.vocables %>
+
+<%= render 'quizzes/addQuiz', unit_id: unit.id %>

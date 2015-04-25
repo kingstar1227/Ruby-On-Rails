@@ -1,10 +1,10 @@
 require 'test_helper'
 
-class CreatingVocbalesTest < ActionDispatch::IntegrationTest
+class CreatingVocablesTest < ActionDispatch::IntegrationTest
   setup do
     @unit = Unit.create(name: "TestUnIt")
     @vocable = Vocable.create(english: 'test', swedish: 'test', german: 'test')
-    @unit.vocable << @vocable
+    @unit.vocables << @vocable
     @quest = Question.generate(vocable: @vocable)
     @quiz = Quiz.create()
     @quiz.questions << @quest
