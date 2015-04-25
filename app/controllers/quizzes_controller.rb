@@ -1,6 +1,6 @@
 class QuizzesController < ApplicationController
   def create
-    @quiz = Quiz.create(unit_id: quiz_params[:id])
+    @quiz = Quiz.create(unit_subscription_id: quiz_params[:id])
 
     @quiz.fetchQuestions()
     @quiz.save
@@ -17,17 +17,17 @@ class QuizzesController < ApplicationController
     user_answers = check_params[:answers]
     if Quiz.exists?(quiz_id) and user_answers && check_params[:quest_ids]
       @question_count = user_answers.length
-      quiz = Quiz.find(quiz_id)
-      @unit = quiz.unit
+      @quiz = Quiz.find(quiz_id)
+      unit = @quiz.unit_subscription.unit
       check_answers(user_answers, check_params[:quest_ids])
     else
-      redirect_to :units
+      redirect_to :unit_subscriptions
     end
   end
 
   private
     def quiz_params
-      params.require(:unit).permit(:id,:name)
+      params.require(:unit_subscription).permit(:id,:unit_id,:user_id)
     end
 
     def check_params

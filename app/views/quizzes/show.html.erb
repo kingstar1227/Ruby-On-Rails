@@ -1,5 +1,5 @@
 <div class="page-header">
-<h1> Quiz for unit: <em> <%= @quiz.unit.name%> </em></h1>
+<h1> Quiz for unit: <em> <%= @quiz.unit_subscription.unit.name%> </em></h1>
 </div>
 <%= form_tag('/quiz/check', method: 'check', class: "form-inline ") do %>
 
@@ -18,7 +18,7 @@
       <div class="col-sm-6">
         <%= text_field_tag("content[answers][#{index}]", nil, {class: "form-control"} ) %>
       </div>
-      
+
     </div>
   <% end %>
 

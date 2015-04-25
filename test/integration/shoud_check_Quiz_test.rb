@@ -2,13 +2,6 @@ require 'test_helper'
 
 class CreatingVocablesTest < ActionDispatch::IntegrationTest
   setup do
-    @unit = Unit.create(name: "TestUnIt")
-    @vocable = Vocable.create(english: 'test', swedish: 'test', german: 'test')
-    @unit.vocables << @vocable
-    @quest = Question.generate(vocable: @vocable)
-    @quiz = Quiz.create()
-    @quiz.questions << @quest
-    @quiz.unit_id = @unit.id
   end
 
   test 'check quiz without params redirected' do

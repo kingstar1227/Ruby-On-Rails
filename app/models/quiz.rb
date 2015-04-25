@@ -1,9 +1,10 @@
 class Quiz < ActiveRecord::Base
   has_many :questions
-  belongs_to :unit
+  belongs_to :unit_subscription
+
 
   def fetchQuestions()
-    unit = Unit.find(self.unit_id)
+    unit = self.unit_subscription.unit
 
     unit.vocables.each do |voc|
       quest = Question.where(vocable_id: voc.id).first

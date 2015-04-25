@@ -12,4 +12,6 @@ v = Vocable.create([{german: 'hallo', english: 'hello', swedish: 'hej'},
                    )
 
 unit1 = Unit.create(name: 'First Unit. Greetings')
-unit1.vocable = v
+unit1.vocables = v
+
+unit_subscription = UnitSubscription.create(unit_id: unit1.id)
