@@ -6,8 +6,6 @@
 </h1>
 <%= render 'vocables/vocable', vocable: @unit.vocables %>
 
-<%= render 'quizzes/addQuiz', unit_id: @unit.id %>
-
 
 <%= link_to 'Back', units_path , class:"btn btn-default" %>
 <%= link_to 'Edit', edit_unit_path(@unit), class: "btn btn-default pull-right" %>
