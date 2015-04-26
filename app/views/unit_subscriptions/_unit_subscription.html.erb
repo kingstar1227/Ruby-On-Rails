@@ -1,3 +1,2 @@
-<p><%= unit_subscription.score%></p>
-<%= render  unit_subscription.unit %>
+<%= render  unit_subscription.unit, progress: unit_subscription.score || nil %>
 <%= render 'quizzes/addQuiz', unit_subscription_id: unit_subscription.id %>
