@@ -3,8 +3,9 @@ require 'test_helper'
 class QuizzesControllerTest < ActionController::TestCase
 
 setup do
+  @user = User.create!(email: "test4@test.de", password: "testtest", password_confirmation: "testtest")
   @unit = Unit.create!(name: "Test")
-  @unit_subscription = UnitSubscription.create!(unit_id: @unit.id)
+  @unit_subscription = UnitSubscription.create!(unit_id: @unit.id,  user_id: @user.id)
 end
 
 test "Should create Quiz for unit" do

@@ -2,8 +2,14 @@ class UnitSubscriptionsController < ApplicationController
   before_action :set_unit_subscription, only: [:show]
 
   def create
-    @unit_subscription = UnitSubscription.create(sub_params)
-    redirect_to @unit_subscription
+    @unit_subscription = UnitSubscription.new(sub_params)
+    if @unit_subscription.valid?
+      @unit_subscription.save
+      redirect_to @unit_subscription
+    else
+      flash[:notice] = "You already started learning this class"
+      redirect_to units_path
+    end
   end
 
   def show
