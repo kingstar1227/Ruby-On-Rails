@@ -20,9 +20,14 @@ class QuizzesController < ApplicationController
       @quiz = Quiz.find(quiz_id)
       unit = @quiz.unit_subscription.unit
       check_answers(user_answers, check_params[:quest_ids])
-      @quiz.unit_subscription.update(score: @quiz.unit_subscription.score+  (@result / @question_count * 20).to_i)
+      if @quiz.unit_subscription.score
+        @quiz.unit_subscription.update(score: @quiz.unit_subscription.score+  (@result / @question_count * 20).to_i)
+      else
+        @quiz.unit_subscription.update(score: (@result / @question_count * 20).to_i)
+      end
     else
       redirect_to :unit_subscriptions
+      flash[:notice] = "Internal Error"
     end
   end
 
