@@ -9,7 +9,9 @@
 
 <body>
   <ul class="nav">
-  <li class="active"><a href="/units">Units</a></li>
+    <% if user_signed_in? %>
+  <li><a href="/users/<%= current_user.id%>">Dashboard</a></li>
+  <% end %>
   </ul>
   <p class="navbar-text pull-right">
     <% if user_signed_in? %>

@@ -1,0 +1,7 @@
+<% %>
+<h2> Welcome <%= @user.email %> </h2>
+<% @user.unit_subscriptions.each do |subscr| %>
+  <%= render subscr %>
+<% end %>
+
+<%= link_to "Add a new Unit", units_path, class: "btn btn-default" %>
