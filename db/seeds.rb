@@ -15,3 +15,6 @@ unit1 = Unit.create(name: 'First Unit. Greetings')
 unit1.vocables = v
 
 unit_subscription = UnitSubscription.create(unit_id: unit1.id)
+
+user = User.create(email:"user@test.de", password: "useruser", password_confirmation: "useruser", admin: false )
+admin = User.create(email:"admin@test.de", password: "adminadmin", password_confirmation: "adminadmin", admin: true )

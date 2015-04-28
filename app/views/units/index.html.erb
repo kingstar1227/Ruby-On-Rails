@@ -18,13 +18,16 @@
           <%= render 'unit_subscriptions/form', unit: unit, user: current_user %>
           <% end %>
         </td>
+        <% if current_user.try(:admin?)%>
         <td><%= link_to 'Edit', edit_unit_path(unit) %></td>
         <td><%= link_to 'Destroy', unit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
+<% if current_user.try(:admin?)%>
 <%= link_to 'New Unit', new_unit_path, class: "btn btn-default" %>
+<% end %>
