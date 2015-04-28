@@ -10,7 +10,7 @@
 <body>
   <ul class="nav">
     <% if user_signed_in? %>
-  <li><a href="/users/<%= current_user.id%>">Dashboard</a></li>
+  <li><%= link_to  "Dashboard", user_path(current_user) %></li>
   <% end %>
   </ul>
   <p class="navbar-text pull-right">

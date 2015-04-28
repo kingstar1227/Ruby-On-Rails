@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  get 'users/:id' => 'users#show'
+  get 'users/:id' => 'users#show', as: :user
 
   resources :quizzes, only:[:create, :show]
 
