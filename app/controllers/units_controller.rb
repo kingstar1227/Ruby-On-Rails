@@ -1,5 +1,6 @@
 class UnitsController < ApplicationController
   before_action :set_unit, only: [:show, :edit, :update, :destroy]
+  before_action :admin_or_redirect, only: [:new, :create, :edit, :update, :destroy]
 
   # GET /units
   # GET /units.json
@@ -62,6 +63,13 @@ class UnitsController < ApplicationController
   end
 
   private
+    def admin_or_redirect
+      unless(current_user.try(:admin?))
+        flash[:alert] = "Your not allowed to access this page"
+        redirect_to units_path
+      end
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_unit
       @unit = Unit.find(params[:id])
