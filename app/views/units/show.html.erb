@@ -8,4 +8,6 @@
 
 
 <%= link_to 'Back', units_path , class:"btn btn-default" %>
+<% if current_user.try(:admin?) %>
 <%= link_to 'Edit', edit_unit_path(@unit), class: "btn btn-default pull-right" %>
+<% end %>
