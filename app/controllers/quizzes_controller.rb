@@ -45,7 +45,7 @@ class QuizzesController < ApplicationController
       @failures = []
       answers.each do | key, user_answer|
         quest = Question.find(quest_ids[key])
-        if user_answer == quest.answer
+        if user_answer.strip.downcase == quest.answer.downcase
           @result = @result + 1
         else
           @failures << {question: quest.question, user_answer: user_answer, right_answer: quest.answer}

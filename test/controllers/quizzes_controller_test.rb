@@ -13,5 +13,4 @@ test "Should create Quiz for unit" do
     post :create, unit_subscription: {id: @unit_subscription.id}
   end
 end
-
 end
