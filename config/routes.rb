@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'static_pages/home', as: 'home'
+  get 'static_pages/help', as: 'help'
+
   resources :unit_subscriptions
 
   devise_for :users
@@ -23,7 +26,7 @@ Rails.application.routes.draw do
   end
 
   unauthenticated do
-    root 'devise/sessions#new', as: :unauthenticated_root
+    root 'static_pages#home', as: :unauthenticated_root
   end
 end
 
