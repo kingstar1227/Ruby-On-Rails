@@ -11,11 +11,6 @@ class QuestionsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "aefwt" do
-
-  assert_equal "Test", @vocable.english
-  end
-
   test "should create Questions" do
     assert_difference('Question.count') do
       post :create, vocable:  {id: @vocable.id}
