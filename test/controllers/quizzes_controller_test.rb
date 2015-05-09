@@ -13,4 +13,9 @@ test "Should create Quiz for unit" do
     post :create, unit_subscription: {id: @unit_subscription.id}
   end
 end
+
+test 'should redirect a post to check without params' do
+  post :check, content: { quiz_id: nil , quest_ids: nil}
+  assert_equal 302, response.status
+end
 end
