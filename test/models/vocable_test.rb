@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class VocableTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+ should belong_to(:unit)
+ should validate_presence_of(:swedish)
+ should validate_presence_of(:english)
 end
