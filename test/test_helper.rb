@@ -12,3 +12,8 @@ end
 class ActionController::TestCase
   include Devise::TestHelpers
 end
+
+class ActionDispatch::IntegrationTest
+  # Make the Capybara DSL available in all integration tests
+  include Capybara::DSL
+end
