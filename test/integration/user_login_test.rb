@@ -8,13 +8,11 @@ class UserLoginTest < ActionDispatch::IntegrationTest
 
 
   test "user can login and get redirected to personal Dashboard" do
-    visit "/"
-    click_link("Login")
-    fill_in "Email", with: @user.email
-    fill_in "Password", with: @password
-    click_button("Log in")
+    sign_in_as(@user,@password)
 
+    #Assertions
     assert_equal "/", current_path
+
     within("h1") do
       assert has_content?("Select a Unit"), "No unit listed"
     end

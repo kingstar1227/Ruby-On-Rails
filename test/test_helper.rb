@@ -20,12 +20,12 @@ class ActionDispatch::IntegrationTest
   Capybara.reset_sessions!
   Capybara.use_default_driver
 
-  def sign_up_as(user,password)
+  def sign_in_as(user,password)
     visit "/"
     click_link("Login")
     fill_in "Email", with: user.email
     fill_in "Password", with: password
-    click_link("Login")
+    click_button("Log in")
   end
 
   def sign_out
