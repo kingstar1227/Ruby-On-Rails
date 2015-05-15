@@ -1,9 +1,10 @@
 require 'test_helper'
 
-class UserTest < ActionDispatch::IntegrationTest
+class UserInteractionTest < ActionDispatch::IntegrationTest
   setup do
     @password = "testtest"
     @user = User.create!(email:"test@test.de", password: @password, password_confirmation: @password)
+    @unit = Unit.create!(name:"test")
   end
 
 
