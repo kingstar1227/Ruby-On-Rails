@@ -19,4 +19,17 @@ class ActionDispatch::IntegrationTest
   include Capybara::DSL
   Capybara.reset_sessions!
   Capybara.use_default_driver
+
+  def sign_up_as(user,password)
+    visit "/"
+    click_link("Login")
+    fill_in "Email", with: user.email
+    fill_in "Password", with: password
+    click_link("Login")
+  end
+
+  def sign_out
+    click_link("Log out")
+  end
+
 end
