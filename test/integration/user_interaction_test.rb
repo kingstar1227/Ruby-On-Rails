@@ -8,14 +8,14 @@ class UserInteractionTest < ActionDispatch::IntegrationTest
   end
 
 
-  test "user can login and get redirected to personal Dashboard" do
+  test "user can login and get redirected to Unitselectio" do
     sign_in_as(@user,@password)
 
     #Assertions
     assert_equal "/", current_path
 
-    within("h1") do
-      assert has_content?("Select a Unit"), "No unit listed"
+    within("h2") do
+      assert has_content?("Welcome"), "No greeting listed"
     end
   end
 
