@@ -5,6 +5,7 @@ class UserInteractionTest < ActionDispatch::IntegrationTest
     @password = "testtest"
     @user = User.create!(email:"test@test.de", password: @password, password_confirmation: @password)
     @unit = Unit.create!(name:"test")
+    @unit_subscription = UnitSubscription.create!(user: @user,unit: @unit)
   end
 
 
@@ -19,7 +20,7 @@ class UserInteractionTest < ActionDispatch::IntegrationTest
     end
   end
 
-  test "user can create unit subscription" do
+  test "user can create unit_subscription" do
     sign_in_as(@user,@password)
     click_link("Add a new Unit")
     within("h1") do
@@ -27,6 +28,15 @@ class UserInteractionTest < ActionDispatch::IntegrationTest
     end
     first('form').click_button("Learn")
     assert_contains current_path, /unit_subscriptions/
+  end
+
+  test "user can create a new quiz" do
+    sign_in_as(@user,@password)
+    first('form').click_button("Test")
+    assert_contains current_path, /quiz/
+    within("h1") do
+      assert has_content?("Quiz")
+    end
   end
 
 end
