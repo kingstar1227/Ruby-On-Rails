@@ -19,4 +19,14 @@ class UserInteractionTest < ActionDispatch::IntegrationTest
     end
   end
 
+  test "user can create unit subscription" do
+    sign_in_as(@user,@password)
+    click_link("Add a new Unit")
+    within("h1") do
+      assert has_content?("Select a Unit"), "No selection message listed"
+    end
+    first('form').click_button("Learn")
+    assert_contains current_path, /unit_subscriptions/
+  end
+
 end
