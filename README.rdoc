@@ -5,7 +5,7 @@ It isn't meant to substitute a language course but to help you staying on track 
 
 == Requirements
 
-The SwedishTrainer is based on Ruby on Rails so you will need a Rails setup (preferable version 4.2 with ruby version 2.2).
+The SwedishTrainer is based on Ruby on Rails so you will need a Rails setup (preferable version 4.2 with ruby version 2.2). It is also using Postgres as database (for heroku deployment), but it doesn't depend on it. So you can choose your favorite database in the Gemfile.
 
 == Installation
 
@@ -19,7 +19,7 @@ Run bundle:
 
 Run your migrations:
 
-  rake db:setup && rake db:migrate
+  rake db:migrate && rake db:seed
 
 Start your rails server:
 
