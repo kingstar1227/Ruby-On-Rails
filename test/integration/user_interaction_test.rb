@@ -9,7 +9,7 @@ class UserInteractionTest < ActionDispatch::IntegrationTest
   end
 
 
-  test "user can login and get redirected to Unitselectio" do
+  test "user can login and get redirected to Unitselection" do
     sign_in_as(@user,@password)
 
     #Assertions
@@ -20,6 +20,12 @@ class UserInteractionTest < ActionDispatch::IntegrationTest
     end
   end
 
+  test "user can get dashbaord and url doesn't show the user_id" do
+    sign_in_as(@user,@password)
+    click_link "Dashboard"
+    assert_no_match /#{@user.id}/, current_path,  "Dashboard path should't show user_id"
+  end
+
   test "user can create unit_subscription" do
     sign_in_as(@user,@password)
     click_link("Add a new Unit")
@@ -27,7 +33,7 @@ class UserInteractionTest < ActionDispatch::IntegrationTest
       assert has_content?("Select a Unit"), "No selection message listed"
     end
     first('form').click_button("Learn")
-    assert_contains current_path, /unit_subscriptions/
+    assert_match /unit_subscriptions/, current_path
   end
 
   test "user can create a new quiz" do
