@@ -1,28 +1,28 @@
-== README
+== SwedishTrainer
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+The SwedishTrainer is an simple vocabulary web-application.
+It isn't meant to substitute a language course but to help you staying on track with your swedish vocabulary.
 
-Things you may want to cover:
+== Requirements
 
-* Ruby version
+The SwedishTrainer is based on Ruby on Rails so you will need a Rails setup (preferable version 4.2 with ruby version 2.2).
 
-* System dependencies
+== Installation
 
-* Configuration
+Clone the repository with
 
-* Database creation
+  git clone https://github.com/RicciFlowing/SwedishTrainer
 
-* Database initialization
+Run bundle:
 
-* How to run the test suite
+  bundle install
 
-* Services (job queues, cache servers, search engines, etc.)
+Run your migrations:
 
-* Deployment instructions
+  rake db:setup && rake db:migrate
 
-* ...
+Start your rails server:
 
+  rails s
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Start learning.
