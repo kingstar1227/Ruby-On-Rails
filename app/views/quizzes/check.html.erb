@@ -20,4 +20,4 @@
 <% end %>
 
 <%= link_to 'Take another quiz for this unit', unit_subscription_path(@quiz.unit_subscription.id), class:"btn btn-default" %>
-<%= link_to 'Back to my Dashboard', user_path(current_user.id), class:"btn btn-default pull-right" %>
+<%= link_to 'Back to my Dashboard', user_path(), class:"btn btn-default pull-right" %>

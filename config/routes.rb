@@ -4,9 +4,10 @@ Rails.application.routes.draw do
 
   resources :unit_subscriptions
 
+  get 'users/dashboard' => 'users#show', as: :user
   devise_for :users
 
-  get 'users/:id' => 'users#show', as: :user
+
 
   resources :quizzes, only:[:create, :show]
 
