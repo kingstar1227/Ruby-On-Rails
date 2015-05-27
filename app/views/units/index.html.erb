@@ -19,7 +19,7 @@
           <% end %>
         </td>
         <% if current_user.try(:admin?)%>
-        <td><%= link_to 'Edit', edit_unit_path(unit) %></td>
+        <td id="edit_link"><%= link_to 'Edit', edit_unit_path(unit) %></td>
         <td><%= link_to 'Destroy', unit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>
       </tr>
